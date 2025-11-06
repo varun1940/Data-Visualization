@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Visualization Midterm</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="DataVizMidterm_files/libs/clipboard/clipboard.min.js"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/popper.min.js"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="DataVizMidterm_files/libs/quarto-html/anchor.min.js"></script>
+<link href="DataVizMidterm_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="DataVizMidterm_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="DataVizMidterm_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="DataVizMidterm_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="DataVizMidterm_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Visualization Midterm</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="varun-pandey" class="level2">
+<h2 class="anchored" data-anchor-id="varun-pandey">Varun Pandey</h2>
+<p>This dataset was downloaded from Kaggle and contains survey data from participants on their opinions of the popular film franchise, Star Wars. It contains data on if an individual has seen Star Wars, if so, what movie is their favorite and also contains demographic data that includes age, gender, and household income. The goal of this analysis is to analyze public opinions about the Star Wars film franchise using the survey data.</p>
+<p>For reference in this dataset, the Star Wars films are listed in order. Episode 1: The Phantom Menace, Episode 2: Attack of the Clones, Episode 3: Revenge of the Sith, Episode 4: A New Hope, Episode 5: The Empire Strikes Back, Episode 6: The Return of the Jedi.</p>
+<p>I would like to answer the following questions: Which Star Wars films are most and least popular among surveyors? How do preferences differ by gender or age groups? Which characters are viewed most favorably? Is there any relationship between Star Wars and Star Trek fandom?</p>
+<div id="48671d77-f42f-40d9-9793-7b9fcce2f2c7" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0bc6976c-176d-498f-bf46-189b68987544" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"star_wars.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RespondentID</th>
+<th data-quarto-table-cell-role="th">Have you seen any of the 6 films in the Star Wars franchise?</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Star Wars film franchise?</th>
+<th data-quarto-table-cell-role="th">Which of the following Star Wars films have you seen? Please select all that apply.</th>
+<th data-quarto-table-cell-role="th">Unnamed: 4</th>
+<th data-quarto-table-cell-role="th">Unnamed: 5</th>
+<th data-quarto-table-cell-role="th">Unnamed: 6</th>
+<th data-quarto-table-cell-role="th">Unnamed: 7</th>
+<th data-quarto-table-cell-role="th">Unnamed: 8</th>
+<th data-quarto-table-cell-role="th">Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Unnamed: 28</th>
+<th data-quarto-table-cell-role="th">Which character shot first?</th>
+<th data-quarto-table-cell-role="th">Are you familiar with the Expanded Universe?</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Expanded Universe?Œæ</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Star Trek franchise?</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Household Income</th>
+<th data-quarto-table-cell-role="th">Education</th>
+<th data-quarto-table-cell-role="th">Location (Census Region)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>NaN</td>
+<td>Response</td>
+<td>Response</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>...</td>
+<td>Yoda</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+<td>Response</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3.292880e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>3</td>
+<td>...</td>
+<td>Very favorably</td>
+<td>I don't understand this question</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Male</td>
+<td>18-29</td>
+<td>NaN</td>
+<td>High school degree</td>
+<td>South Atlantic</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.292880e+09</td>
+<td>No</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Yes</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$0 - $24,999</td>
+<td>Bachelor degree</td>
+<td>West South Central</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3.292765e+09</td>
+<td>Yes</td>
+<td>No</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1</td>
+<td>...</td>
+<td>Unfamiliar (N/A)</td>
+<td>I don't understand this question</td>
+<td>No</td>
+<td>NaN</td>
+<td>No</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$0 - $24,999</td>
+<td>High school degree</td>
+<td>West North Central</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3.292763e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>5</td>
+<td>...</td>
+<td>Very favorably</td>
+<td>I don't understand this question</td>
+<td>No</td>
+<td>NaN</td>
+<td>Yes</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$100,000 - $149,999</td>
+<td>Some college or Associate degree</td>
+<td>West North Central</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 38 columns</p>
+</div>
+</div>
+</div>
+<div id="1463e984-abd5-41ea-9106-610a9ebbfd27" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Index(['RespondentID',
+       'Have you seen any of the 6 films in the Star Wars franchise?',
+       'Do you consider yourself to be a fan of the Star Wars film franchise?',
+       'Which of the following Star Wars films have you seen? Please select all that apply.',
+       'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8',
+       'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.',
+       'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13',
+       'Unnamed: 14',
+       'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.',
+       'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18', 'Unnamed: 19',
+       'Unnamed: 20', 'Unnamed: 21', 'Unnamed: 22', 'Unnamed: 23',
+       'Unnamed: 24', 'Unnamed: 25', 'Unnamed: 26', 'Unnamed: 27',
+       'Unnamed: 28', 'Which character shot first?',
+       'Are you familiar with the Expanded Universe?',
+       'Do you consider yourself to be a fan of the Expanded Universe?æ',
+       'Do you consider yourself to be a fan of the Star Trek franchise?',
+       'Gender', 'Age', 'Household Income', 'Education',
+       'Location (Census Region)'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="a8db79e5-444e-4a71-84b6-68855b55eb2f" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.isnull().<span class="bu">sum</span>().<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>13455</code></pre>
+</div>
+</div>
+<div id="0ccca6e1-4d88-4830-9b93-c57a73fb63cf" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.isnull().<span class="bu">sum</span>().<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+<p>I wanted to drop all the null values off the dataset so I did the dropna() above.</p>
+<div id="325aac8c-1391-4d7f-bdf6-9d66ceebb84a" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Which of the following Star Wars films have you seen? Please select all that apply.'</span>: <span class="st">'Episode 1'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 4'</span>: <span class="st">'Episode 2'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 5'</span>: <span class="st">'Episode 3'</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 6'</span>: <span class="st">'Episode 4'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 7'</span>: <span class="st">'Episode 5'</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 8'</span>: <span class="st">'Episode 6'</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.'</span>: <span class="st">'Episode 1 Ranking'</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 10'</span>: <span class="st">'Episode 2 Ranking'</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 11'</span>: <span class="st">'Episode 3 Ranking'</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 12'</span>: <span class="st">'Episode 4 Ranking'</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 13'</span>: <span class="st">'Episode 5 Ranking'</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unnamed: 14'</span>: <span class="st">'Episode 6 Ranking'</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RespondentID</th>
+<th data-quarto-table-cell-role="th">Have you seen any of the 6 films in the Star Wars franchise?</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Star Wars film franchise?</th>
+<th data-quarto-table-cell-role="th">Episode 1</th>
+<th data-quarto-table-cell-role="th">Episode 2</th>
+<th data-quarto-table-cell-role="th">Episode 3</th>
+<th data-quarto-table-cell-role="th">Episode 4</th>
+<th data-quarto-table-cell-role="th">Episode 5</th>
+<th data-quarto-table-cell-role="th">Episode 6</th>
+<th data-quarto-table-cell-role="th">Episode 1 Ranking</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Unnamed: 28</th>
+<th data-quarto-table-cell-role="th">Which character shot first?</th>
+<th data-quarto-table-cell-role="th">Are you familiar with the Expanded Universe?</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Expanded Universe?Œæ</th>
+<th data-quarto-table-cell-role="th">Do you consider yourself to be a fan of the Star Trek franchise?</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Household Income</th>
+<th data-quarto-table-cell-role="th">Education</th>
+<th data-quarto-table-cell-role="th">Location (Census Region)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>3.292731e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>5</td>
+<td>...</td>
+<td>Somewhat favorably</td>
+<td>Greedo</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$100,000 - $149,999</td>
+<td>Some college or Associate degree</td>
+<td>West North Central</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<td>3.292719e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>1</td>
+<td>...</td>
+<td>Very favorably</td>
+<td>Han</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$25,000 - $49,999</td>
+<td>Bachelor degree</td>
+<td>Middle Atlantic</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>3.292583e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>4</td>
+<td>...</td>
+<td>Somewhat favorably</td>
+<td>Han</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$0 - $24,999</td>
+<td>Some college or Associate degree</td>
+<td>West South Central</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>3.292512e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>6</td>
+<td>...</td>
+<td>Very favorably</td>
+<td>Greedo</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$50,000 - $99,999</td>
+<td>Bachelor degree</td>
+<td>South Atlantic</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">27</th>
+<td>3.292420e+09</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+<td>4</td>
+<td>...</td>
+<td>Very favorably</td>
+<td>Greedo</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Male</td>
+<td>18-29</td>
+<td>$100,000 - $149,999</td>
+<td>Some college or Associate degree</td>
+<td>South Atlantic</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 38 columns</p>
+</div>
+</div>
+</div>
+<p>Here, I wanted to rename all of the unnamed movie names to the episode number so it would be easier to visualize when creating plots.</p>
+<div id="e1f0eec2-86c9-40a8-8ada-14638c368ef9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>seen_movies <span class="op">=</span> [<span class="st">'Episode 1'</span>, <span class="st">'Episode 2'</span>, <span class="st">'Episode 3'</span>, <span class="st">'Episode 4'</span>, <span class="st">'Episode 5'</span>, <span class="st">'Episode 6'</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rank_movies <span class="op">=</span> [<span class="st">'Episode 1 Ranking'</span>, <span class="st">'Episode 2 Ranking'</span>, <span class="st">'Episode 3 Ranking'</span>, <span class="st">'Episode 4 Ranking'</span>, <span class="st">'Episode 5 Ranking'</span>, <span class="st">'Episode 6 Ranking'</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>seen_df <span class="op">=</span> df[seen_movies]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>rank_df <span class="op">=</span> df[rank_movies]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="f9920f8b-fc58-46d8-9062-ae8a36e80ba2" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>seen_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Episode 1</th>
+<th data-quarto-table-cell-role="th">Episode 2</th>
+<th data-quarto-table-cell-role="th">Episode 3</th>
+<th data-quarto-table-cell-role="th">Episode 4</th>
+<th data-quarto-table-cell-role="th">Episode 5</th>
+<th data-quarto-table-cell-role="th">Episode 6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">27</th>
+<td>Star Wars: Episode I The Phantom Menace</td>
+<td>Star Wars: Episode II Attack of the Clones</td>
+<td>Star Wars: Episode III Revenge of the Sith</td>
+<td>Star Wars: Episode IV A New Hope</td>
+<td>Star Wars: Episode V The Empire Strikes Back</td>
+<td>Star Wars: Episode VI Return of the Jedi</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="b03a89f3-1c23-4c78-bda5-38f92098037d" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rank_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Episode 1 Ranking</th>
+<th data-quarto-table-cell-role="th">Episode 2 Ranking</th>
+<th data-quarto-table-cell-role="th">Episode 3 Ranking</th>
+<th data-quarto-table-cell-role="th">Episode 4 Ranking</th>
+<th data-quarto-table-cell-role="th">Episode 5 Ranking</th>
+<th data-quarto-table-cell-role="th">Episode 6 Ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>5</td>
+<td>4</td>
+<td>6</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">27</th>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="79325c84-8282-40b8-b919-b7b7c7bc194b" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> rank_movies:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> pd.to_numeric(df[col], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>rank_df <span class="op">=</span> df[rank_movies]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>avg_ranks <span class="op">=</span> rank_df.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here I needed to change the ranked_movies to numeric because they were in strings earlier. Then I also found the average of the ranks so that it would be easier to plot later.</p>
+<div id="efedad3e-7f47-4161-a42d-c873ef9c7d36" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>age_order <span class="op">=</span> [<span class="st">'18-29'</span>, <span class="st">'30-44'</span>, <span class="st">'45-60'</span>, <span class="st">'&gt;60'</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Age'</span>] <span class="op">=</span> pd.Categorical(df[<span class="st">'Age'</span>], categories<span class="op">=</span>age_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Age'</span>, bins<span class="op">=</span><span class="dv">10</span>, kde<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Age Distribution of Star Wars Survey Respondents"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age Group"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Respondents"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This first chart shows the age distribution of the survey respondents. Over 40 of them were younger and between 18-29 and then 30-44 made up a sizable amount of people. 45-60 finally, was the lowest of the age groups.</p>
+<div id="e462a852-1e82-4428-b3dc-07aa6ecb8110" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Gender'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Gender Distribution of Respondents"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Gender"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Respondents"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I then moved on to understand the gender distribution of the surveyors which revealed that the majority of people who answered were male with over 80 males answering and females only making up about 40. This shows that the majority of the surveyors were males in this dataset.</p>
+<div id="db000ed4-5605-438d-8ba5-1a6a77931a2d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>seen_counts <span class="op">=</span> seen_df.notnull().<span class="bu">sum</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>seen_counts.index, y<span class="op">=</span>seen_counts.values)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Number of People Who Have Seen Each Star Wars Movie"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Movie (Episode)"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Viewers"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This graph was made to show how many people have seen each movie. But I did realize that in the dataset, the surveyors have to have seen every single star wars movie if they are to rank them 1-6. So it shows that over 120 people have seen the movies since if they answered yes to watching a movie, they have to see every single movie to be able to rank which is why they are all the same.</p>
+<div id="567be00a-8650-48e2-a7d8-652f4fa37cb7" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shot_counts <span class="op">=</span> df[<span class="st">'Which character shot first?'</span>].value_counts()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>shot_counts.index, y<span class="op">=</span>shot_counts.values)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Who Do Fans Think Shot First?"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Character"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Respondents"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This graph is interesting because it is something only real Star Wars fans can understand. For reference, there is a scene in Episode 4: A New Hope where Han Solo and another character called Greedo are sitting at a table. It has been a heated debate over the last decades on who shoots first when Han Solo kills Greedo. This plot shows that the majority of fans believe that Han Solo shoots first between the two and about a little less than 40 believe Greedo shot first. Many die hard fans would know about this scene and have a preference between the two characters. Those who answered that they didn’t understand probably aren’t diehard fans or just don’t remember the scene.</p>
+<div id="bb90ba71-f8a3-4a9d-9c01-3cde263a0777" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fav_df <span class="op">=</span> df.groupby(<span class="st">'Gender'</span>)[rank_movies].<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x <span class="op">==</span> <span class="dv">1</span>).<span class="bu">sum</span>())</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fav_df <span class="op">=</span> fav_df.T </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I had to ask chatgpt how to do this part earlier.</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>fav_df.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Favorite Star Wars Movies (Number 1 Rank Votes) by Gender"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Movie (Episode)"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Votes Ranked 1"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at gender earlier, I wanted to see the gender distribution when voting for each movie. This plot shows which movie people ranked as their best or number 1 movie out of the 6. It shows that Episode 5: The Empire Strikes Back is still the highest by a large amount. It is majority male dominated with over 40 males voting for it as their best movie. The highest female rated movie was Episode 4: A New Hope which had just over 10 votes.</p>
+<div id="b4efec04-ca1d-4317-bad7-515aac67dc5d" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>              x<span class="op">=</span><span class="st">'Do you consider yourself to be a fan of the Star Trek franchise?'</span>, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>              hue<span class="op">=</span><span class="st">'Gender'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Star Trek Fans by Gender"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Star Trek Fan?"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Fans"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The dataset included a category which asked if a person was a fan of a similar franchise called Star Trek. It is what Star Wars used to be compared with in terms of how big of a franchise it was. Star Wars ended up being one of the biggest film franchises leaving Star Trek in the dust. This plot asks if some of the respondents were Star Trek fans. This could also play into why some people aren’t Star Wars fans because they prefer Star Trek and vice versa with people not liking Star Trek but Star Wars instead. This shows the gender distribution of the category which shows that about 60 males and over 30 females are Star Trek fans while about 30 males and about 10 females do not like Star Trek.</p>
+<div id="675be3a8-6b36-428f-bb01-b376c421bc43" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>best_score <span class="op">=</span> avg_ranks.<span class="bu">min</span>()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>best_movie <span class="op">=</span> avg_ranks[avg_ranks <span class="op">==</span> best_score].index[<span class="dv">0</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>avg_ranks.index, y<span class="op">=</span>avg_ranks.values, color<span class="op">=</span><span class="st">"skyblue"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Movie Ranking (Highlighting Favorite)"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Movie (Episode)"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average Rank"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.text(</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="bu">list</span>(avg_ranks.index).index(best_movie),</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>best_score <span class="op">+</span> <span class="fl">0.1</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="st">"Top Movie"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'red'</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    ha<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">30</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">int</span>(<span class="bu">max</span>(avg_ranks.values)) <span class="op">+</span> <span class="dv">2</span>))</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now this visualization, I plotted the average rankings which I did earlier. The lower the ranking, the better in this since 1 would typically be the best. It shows that Episode 5: The Empire Strikes Back is the highest ranked movie out of the surveyors with an average rank of about 2. Episode 4 and Episode 6 make up the second and third best ranking. I added an annotation that shows that Episode 5 is the top ranked movie.</p>
+<div id="10db0c3a-3dea-4de2-9f5f-96056667f92e" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>avg_ranks.index,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>avg_ranks.values,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span>avg_ranks.index,    </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span><span class="st">"colorblind"</span>,             </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Improved Visualization: Accessible Color Palette"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Movie (Episode)"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average Rank"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">30</span>, ha<span class="op">=</span><span class="st">"right"</span>)  </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">int</span>(<span class="bu">max</span>(avg_ranks.values)) <span class="op">+</span> <span class="dv">2</span>)) </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DataVizMidterm_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I improved the previous chart by adding a colorblind palette to the chart so it is not all one color. This can help those who might be colorblind to easily distinguish the bars on the chart. I also added the ticks to make the x-axis more readable.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
